@@ -1,0 +1,14 @@
+.venv
+venv
+.git
+.env
+.streamlit
+__pycache__
+.pytest_cache
+.coverage
+chroma_db
+data/uploads
+*.pdf
+*.log
+.vscode
+.idea

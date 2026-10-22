@@ -1,0 +1,35 @@
+
+name: documind-ai
+
+services:
+  documind:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: documind-ai
+
+    ports:
+      - "8501:8501"
+
+    env_file:
+      - .env
+
+    environment:
+      LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:?Set GEMINI_API_KEY in .env}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.8-flash}
+      HF_TOKEN: ${HF_TOKEN:-}
+      HF_MODEL: ${HF_MODEL:-openai/gpt-oss-120b:cheapest}
+      CHROMA_PATH: /app/chroma_db
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-sentence-transformers/all-MiniLM-L6-v2}
+      TOP_K: ${TOP_K:-5}
+      MAX_AGENT_ATTEMPTS: ${MAX_AGENT_ATTEMPTS:-2}
+
+    volumes:
+      - documind_data:/app/chroma_db
+
+    restart: unless-stopped
+
+volumes:
+  documind_data:

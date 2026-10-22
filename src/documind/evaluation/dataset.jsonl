@@ -1,0 +1,5 @@
+
+{"id":"library-01","question":"How many books can a member borrow?","expected_answer":"A member can borrow up to 5 books.","answerable":true,"relevant_chunk_ids":[]}
+{"id":"library-02","question":"How long can a DVD be borrowed?","expected_answer":"A DVD can be borrowed for 7 days.","answerable":true,"relevant_chunk_ids":[]}
+{"id":"library-03","question":"What is the annual membership fee for non-residents?","expected_answer":"The annual membership fee for non-residents is $20.","answerable":true,"relevant_chunk_ids":[]}
+{"id":"library-04","question":"What is the library Wi-Fi password?","expected_answer":"","answerable":false,"relevant_chunk_ids":[]}

@@ -1,0 +1,64 @@
+{
+  "note": "Starter report. Token overlap is not semantic correctness. Use verified labels and a held-out test set before reporting performance claims.",
+  "num_questions": 4,
+  "mean_token_f1": 0.4538,
+  "mean_retrieved_count": 3,
+  "results": [
+    {
+      "id": "library-01",
+      "question": "How many books can a member borrow?",
+      "answerable": true,
+      "retrieved_count": 3,
+      "provider": "gemini",
+      "citations_valid": true,
+      "answer_metrics": {
+        "token_precision": 0.2,
+        "token_recall": 1.0,
+        "token_f1": 0.3333
+      },
+      "answer": "Each member may borrow up to 5 physical books at one time [E1, DocuMindAI_Sample_Document.pdf, p. 1]. Additionally, members can use the Greenfield Reads app to borrow up to 3 e-books at a time [E1, DocuMindAI_Sample_Document.pdf, p. 1]."
+    },
+    {
+      "id": "library-02",
+      "question": "How long can a DVD be borrowed?",
+      "answerable": true,
+      "retrieved_count": 3,
+      "provider": "gemini",
+      "citations_valid": true,
+      "answer_metrics": {
+        "token_precision": 0.6154,
+        "token_recall": 1.0,
+        "token_f1": 0.7619
+      },
+      "answer": "A DVD can be borrowed for 7 days [E1, DocuMindAI_Sample_Document.pdf, p. 1]."
+    },
+    {
+      "id": "library-03",
+      "question": "What is the annual membership fee for non-residents?",
+      "answerable": true,
+      "retrieved_count": 3,
+      "provider": "gemini",
+      "citations_valid": true,
+      "answer_metrics": {
+        "token_precision": 0.5625,
+        "token_recall": 1.0,
+        "token_f1": 0.72
+      },
+      "answer": "The annual membership fee for non-residents is $20 per year [E1, DocuMindAI_Sample_Document.pdf, p. 1]."
+    },
+    {
+      "id": "library-04",
+      "question": "What is the library Wi-Fi password?",
+      "answerable": false,
+      "retrieved_count": 3,
+      "provider": "gemini",
+      "citations_valid": false,
+      "answer_metrics": {
+        "token_precision": 0.0,
+        "token_recall": 0.0,
+        "token_f1": 0.0
+      },
+      "answer": "The provided evidence is insufficient to answer what the library Wi-Fi password is, as it is not mentioned in the documents.\n\n**Citation warning:** The automatic check could not validate the source/page references. Review the evidence passages below before relying on the answer. This check does not independently prove semantic support."
+    }
+  ]
+}

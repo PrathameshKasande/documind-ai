@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: documind-ai
+Version: 0.1.0
+Summary: Agentic research assistant for multi-document research
+Requires-Python: <3.13,>=3.11
+License-File: LICENSE
+Requires-Dist: streamlit>=1.40
+Requires-Dist: langgraph>=0.2
+Requires-Dist: google-genai>=1.0
+Requires-Dist: huggingface_hub>=0.27
+Requires-Dist: python-dotenv>=1.0
+Requires-Dist: chromadb>=0.6
+Requires-Dist: sentence-transformers>=3.3
+Requires-Dist: pymupdf>=1.24
+Requires-Dist: rank-bm25>=0.2.2
+Requires-Dist: pydantic>=2.8
+Requires-Dist: pandas>=2.2
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: scikit-learn>=1.5; extra == "dev"
+Dynamic: license-file

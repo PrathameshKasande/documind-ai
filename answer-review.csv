@@ -1,0 +1,5 @@
+"id","question","expected","generated","human_correct"
+"demo-1","What is the purpose of a retrieval-augmented generation system?","","Based on the provided evidence, the text mentions that testing retrieval and question answering is part of the purpose of the fictional sample knowledge document [E1, DocuMindAI_Sample_Document.pdf, p. 1], but the provided evidence is insufficient to explain the purpose of a retrieval-augmented generation system.",1,""
+"demo-2","What are the main limitations of this starter project?","","Based on the provided evidence, the documents describe the operations and services of the Greenfield Community Library [E2, DocuMindAI_Sample_Document.pdf, p. 1] and provide a fictional sample for testing DocuMind AI [E1, DocuMindAI_Sample_Document.pdf, p. 2; E2, DocuMindAI_Sample_Document.pdf, p. 1]. 
+
+However, the provided evidence is insufficient to answer the question, as it does not contain any information regarding the limitations of a ""starter project.""",""
