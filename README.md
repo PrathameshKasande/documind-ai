@@ -225,7 +225,7 @@ Suggestions, feedback, and contributions are welcome!
 Aspiring Jr.Data Scientist, AI Developer | Exploring Artificial Intelligence, Generative AI, and Python Development
 
 - 🌐 **Live Project:** [DocuMind AI](https://documind-ai-agent-v6zlz9m4pcxndxkws4r4fs.streamlit.app/)
-- 💻 **GitHub:** [Add your GitHub profile URL](https://github.com/)
+
 
 ## ⭐ Support
 
