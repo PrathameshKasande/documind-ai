@@ -2,12 +2,28 @@
 from __future__ import annotations
 
 import logging
+import sys
 from pathlib import Path
 
 import streamlit as st
 from dotenv import load_dotenv
 
-load_dotenv()
+# =========================================================
+# PROJECT PATH CONFIGURATION
+# Fix imports for the src/documind package on Streamlit Cloud
+# =========================================================
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+SRC_DIR = PROJECT_ROOT / "src"
+
+if SRC_DIR.is_dir() and str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+load_dotenv(PROJECT_ROOT / ".env")
+
+# =========================================================
+# APPLICATION IMPORTS
+# =========================================================
 
 from documind.agent.graph import run_research
 from documind.ingestion.chunking import chunk_pages
@@ -78,7 +94,9 @@ def run_agent() -> None:
             )
 
         if not isinstance(result, dict):
-            raise TypeError("The research workflow returned an unexpected result.")
+            raise TypeError(
+                "The research workflow returned an unexpected result."
+            )
 
         st.session_state.last_result = result
 
@@ -195,7 +213,6 @@ st.markdown(
     div[data-testid="stFileUploader"] {
         border-radius: 12px;
     }
-
     </style>
     """,
     unsafe_allow_html=True,
@@ -229,7 +246,9 @@ st.markdown(
 
 with st.sidebar:
     st.markdown("## 📚 Document library")
-    st.caption("Build your private research workspace with PDFs.")
+    st.caption(
+        "Build your private research workspace with PDFs."
+    )
 
     uploaded_files = st.file_uploader(
         "Upload PDF documents",
@@ -257,10 +276,14 @@ with st.sidebar:
         successful_files = 0
         failed_files = []
 
-        progress = st.progress(0, text="Preparing your documents...")
+        progress = st.progress(
+            0,
+            text="Preparing your documents...",
+        )
 
         for index, uploaded_file in enumerate(
-            uploaded_files, start=1
+            uploaded_files,
+            start=1,
         ):
             try:
                 pages = load_pdf_bytes(
@@ -289,7 +312,8 @@ with st.sidebar:
 
             except Exception as exc:
                 logger.exception(
-                    "Indexing failed for %s", uploaded_file.name
+                    "Indexing failed for %s",
+                    uploaded_file.name,
                 )
                 failed_files.append(
                     f"{uploaded_file.name}: {type(exc).__name__}"
@@ -297,7 +321,10 @@ with st.sidebar:
 
             progress.progress(
                 index / len(uploaded_files),
-                text=f"Processing document {index} of {len(uploaded_files)}",
+                text=(
+                    f"Processing document {index} "
+                    f"of {len(uploaded_files)}"
+                ),
             )
 
         progress.empty()
@@ -328,7 +355,8 @@ with st.sidebar:
             st.markdown(f"📄 {filename}")
     else:
         st.info(
-            "No documents indexed yet. Upload a PDF and index it to begin."
+            "No documents indexed yet. Upload a PDF and index it "
+            "to begin."
         )
 
     st.divider()
@@ -417,7 +445,8 @@ suggestions = [
 suggestion_columns = st.columns(3)
 
 for column, (label, prompt) in zip(
-    suggestion_columns, suggestions
+    suggestion_columns,
+    suggestions,
 ):
     with column:
         st.button(
@@ -444,7 +473,10 @@ with st.expander("⚙️ Research settings"):
         min_value=3,
         max_value=10,
         key="top_k",
-        help="Controls how many retrieved passages are supplied to the research workflow.",
+        help=(
+            "Controls how many retrieved passages are supplied "
+            "to the research workflow."
+        ),
     )
 
 research_col, new_col, _ = st.columns([1.25, 1.2, 3])
@@ -493,14 +525,15 @@ if result:
         unsafe_allow_html=True,
     )
 
-    # The answer remains normal selectable text.
     st.markdown(answer)
 
     st.write("")
 
     download_data = result.get("markdown") or answer
 
-    download_col, new_question_col, _ = st.columns([1.5, 1.5, 3])
+    download_col, new_question_col, _ = st.columns(
+        [1.5, 1.5, 3]
+    )
 
     with download_col:
         st.download_button(
@@ -558,7 +591,10 @@ features = [
     ),
 ]
 
-for column, (title, description) in zip(feature_columns, features):
+for column, (title, description) in zip(
+    feature_columns,
+    features,
+):
     with column:
         st.markdown(
             f"""
